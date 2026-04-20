@@ -4,44 +4,47 @@
  */
 public class Mobile extends Gadget
 {
-    private void showError(String message)
-    {
-        Alert alert = new Alert(Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(message);
-        alert.showAndWait();
+   private int credit;
+   
+   public Mobile(String mobile, double price, int weight, String size, int credit) {
+       super(mobile, price, weight, size);
+       this.credit = credit;
     }
     
-    private int credit;
-    
-    public Mobile(String model, double price, int weight, String size, int credit)
-    {
-        super(model,price,weight,size);
-        this.credit = credit;
-    }
-    
-    public int getCredit()
-    {
+    public int getCredit() {
         return credit;
     }
     
-    public void addCredit(int amount)
-    {
-        if (amount > 0)
-        {
+    public void addCredit(int amount) {
+        if (amount > 0) {
             credit += amount;
-        }
-        else
+            System.out.println("Credit added, new balance: " + credit);
+        } else
         {
-            showError("Invalid credit amount.");
+            System.out.println("You need to enter a positive number.");
         }
     }
     
-    public void makeCall(String number, int duration)
-    {
-        if (credit >= duration)
-        {
-            
+    public void makeCall(String number, int mins) {
+        if (mins <= 0) {
+            System.out.println("Invalid call duration.");
+            return;
         }
+        
+        if (credit >= mins) {
+            System.out.println("Calling " + number + " for " + mins + " mins....");
+            credit -= mins;
+            System.out.println("Remaining credit: " + credit);
+        } else
+        {
+            System.out.println("Not enough credit to make this call.");
+        }
+        
+    }
+    
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Credit left: " + credit + " mins");
     }
 }
