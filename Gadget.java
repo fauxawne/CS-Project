@@ -1,8 +1,3 @@
-
-/**
- * Initialise the attributes for the gadget
- * Print gadget information to terminal
- */
 public class Gadget
 {
     private String model;
@@ -10,9 +5,6 @@ public class Gadget
     private int weight;
     private String size;
 
-    /**
-     * Constructor
-     */
     public Gadget(String model, double price, int weight, String size)
     {
         this.model = model;
@@ -21,9 +13,6 @@ public class Gadget
         this.size = size;
     }
 
-    /**
-     * Getters
-     */
     public String getModel()
     {
         return model;
@@ -41,9 +30,6 @@ public class Gadget
         return size;
     }
     
-    /**
-     * Display method
-     */
     public void display()
     {
         System.out.println(
